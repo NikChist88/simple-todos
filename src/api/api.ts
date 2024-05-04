@@ -18,7 +18,4 @@ export const api = {
   updateTodo(id: string, todo: TodoType) {
     return mockAPI.put(`todos/${id}`, todo)
   },
-  updateTodoTitle(id: string, title: string) {
-    return mockAPI.put(`todos/${id}`, { title: title })
-  },
 }

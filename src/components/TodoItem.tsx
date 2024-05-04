@@ -26,6 +26,7 @@ export const TodoItem: FC<TodoPropsType> = ({ todo }) => {
         cursor={'pointer'}
         color="red"
         onClick={removeTodo}
+        size={'16px'}
       />
     </ListItem>
   )

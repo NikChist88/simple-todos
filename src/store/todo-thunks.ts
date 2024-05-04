@@ -26,8 +26,8 @@ export const createTodoTC = createAsyncThunk(
         title: title,
         completed: false,
       }
-      await api.createTodo(todo)
-      dispatch(createTodoAC(todo))
+      const { data } = await api.createTodo(todo)
+      dispatch(createTodoAC(data))
     } catch (error) {
       alert(error)
     }
@@ -48,18 +48,17 @@ export const removeTodoTC = createAsyncThunk(
 
 export const toggleTodoStatusTC = createAsyncThunk(
   'todos/toggleTodoTC',
-  async (id: string, { dispatch, getState }) => {
-
+  async (param: { id: string; completed: boolean }, { dispatch, getState }) => {
     const { todos } = getState() as RootState
-    const todo = todos.todos.find((todo) => todo.id === id)
-    
+    const todo = todos.todos.find((todo) => todo.id === param.id)
+
     try {
       if (todo) {
-        await api.updateTodo(id, {
+        const { data } = await api.updateTodo(param.id, {
           ...todo,
-          completed: !todo.completed,
+          completed: param.completed,
         })
-        dispatch(toggleTodoAC(todo))
+        dispatch(toggleTodoAC(data))
       }
     } catch (error) {
       alert(error)
@@ -70,13 +69,15 @@ export const toggleTodoStatusTC = createAsyncThunk(
 export const updateTodoTitleTC = createAsyncThunk(
   'todos/updateTodoTitleTC',
   async (param: { id: string; title: string }, { dispatch, getState }) => {
-
     const { todos } = getState() as RootState
     const todo = todos.todos.find((todo) => todo.id === param.id)
 
     try {
       if (todo) {
-        const { data } = await api.updateTodoTitle(param.id, param.title)
+        const { data } = await api.updateTodo(param.id, {
+          ...todo,
+          title: param.title,
+        })
         dispatch(updateTodoTitleAC(data))
       }
     } catch (error) {

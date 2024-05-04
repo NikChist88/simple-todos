@@ -29,7 +29,8 @@ export const useTodos = (todo?: TodoType) => {
   }
 
   const toggleTodoStatus = () => {
-    todo && dispatch(toggleTodoStatusTC(todo.id))
+    todo &&
+      dispatch(toggleTodoStatusTC({ id: todo.id, completed: !todo.completed }))
   }
 
   const addTodo = () => {

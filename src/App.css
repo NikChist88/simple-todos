@@ -19,24 +19,29 @@
 }
 
 .list {
-  padding: 30px;
+  padding: 15px;
+  border: 1px solid #dfdddd;
+  border-radius: 5px;
 }
 
 .list-item {
-  width: 300px;
-  padding: 10px;
+  font-size: 14px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 15px;
   border-bottom: 1px solid #259795;
+  div {
+    margin-right: auto;
+  }
 }
 
 .total {
-  font-size: 18px;
+  text-align: right;
+  font-size: 14px;
   display: inline-block;
   width: 100%;
-  text-align: center;
   font-weight: 500;
 }
 

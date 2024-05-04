@@ -11,6 +11,7 @@ export const TodosFilter = () => {
       direction="row"
       spacing={4}
       align="center"
+      marginBottom={'30px'}
     >
       <Button
         colorScheme="teal"
