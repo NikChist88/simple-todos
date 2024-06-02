@@ -1,25 +1,46 @@
 import { useEffect } from 'react'
-import { TodosForm } from './components/TodosForm'
-import { TodosList } from './components/TodosList'
-import { TodosFilter } from './components/TodosFilter'
 import { useAppDispatch } from './store'
 import { getTodosTC } from './store/todo-thunks'
+import { MainLayout } from './layouts/MainLayout'
+import { HomePage } from './pages/HomePage'
+import { LoginPage } from './pages/LoginPage'
+import { ErrorPage } from './pages/ErrorPage'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom'
 import './App.css'
 
 export const App = () => {
-  console.log('rendered App')
-
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(getTodosTC())
   }, [])
 
-  return (
-    <div className="app">
-      <TodosForm />
-      <TodosFilter />
-      <TodosList />
-    </div>
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route
+        path="/"
+        element={<MainLayout />}
+      >
+        <Route
+          index
+          element={<HomePage />}
+        />
+        <Route
+          path="login"
+          element={<LoginPage />}
+        />
+        <Route
+          path="*"
+          element={<ErrorPage />}
+        />
+      </Route>
+    )
   )
+
+  return <RouterProvider router={router} />
 }

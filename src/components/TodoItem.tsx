@@ -10,8 +10,6 @@ type TodoPropsType = {
 }
 
 export const TodoItem: FC<TodoPropsType> = ({ todo }) => {
-  console.log('rendered TodoItem')
-
   const { toggleTodoStatus, removeTodo } = useTodos(todo)
 
   return (

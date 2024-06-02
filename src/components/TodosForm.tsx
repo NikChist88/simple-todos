@@ -3,8 +3,6 @@ import { MdAddCircleOutline } from 'react-icons/md'
 import { Input, Button, Box } from '@chakra-ui/react'
 
 export const TodosForm = () => {
-  console.log('rendered TodosForm')
-
   const { title, handleOnChange, handleKeyPress, addTodo } = useTodos()
 
   return (
@@ -16,6 +14,7 @@ export const TodosForm = () => {
         onChange={handleOnChange}
         onKeyUp={handleKeyPress}
         value={title}
+        maxLength={25}
         placeholder="Please enter todo..."
       />
       <Button

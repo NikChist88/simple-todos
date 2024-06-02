@@ -29,9 +29,10 @@ export const EditableTodo: FC<EditableItemPropsType> = ({ todo }) => {
       <EditablePreview />
       <Input
         as={EditableInput}
-        width={'90%'}
+        width={'95%'}
         height={'24px'}
         fontSize={'14px'}
+        maxLength={25}
         focusBorderColor="#259795"
         onChange={handleChangeTitle}
       />

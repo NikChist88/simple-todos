@@ -5,8 +5,6 @@ import { selectIsLoading } from '../store/todo-slice'
 import { useFilter } from '../hooks/use-filter'
 
 export const TodosList = () => {
-  console.log('rendered TodosList')
-
   const isLoading = useAppSelector(selectIsLoading)
   const filteredTodos = useFilter()
 
