@@ -1,11 +1,12 @@
-import { selectAllTodos } from '../store/todo-slice'
 import { selectFilter } from '../store/filter-slice'
 import { useAppSelector } from '../store'
+import { useGetTodosQuery } from '../api/todos-api'
 
 export const useFilter = () => {
-  const todos = useAppSelector(selectAllTodos)
+  const { data = [], isLoading } = useGetTodosQuery()
   const filter = useAppSelector(selectFilter)
-  let filteredTodos = todos
+  
+  let filteredTodos = data
 
   switch (filter) {
     case 'completed':
@@ -18,5 +19,5 @@ export const useFilter = () => {
       filteredTodos
   }
 
-  return filteredTodos
+  return { filteredTodos, isLoading }
 }

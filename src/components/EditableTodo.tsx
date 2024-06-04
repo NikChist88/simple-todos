@@ -1,5 +1,5 @@
-import { ChangeEvent, FC, useState } from 'react'
-import { TodoType } from '../store/todo-slice'
+import { FC } from 'react'
+import { TodoType } from '../api/todos-api'
 import { useTodos } from '../hooks/use-todos'
 import {
   Editable,
@@ -13,18 +13,14 @@ type EditableItemPropsType = {
 }
 
 export const EditableTodo: FC<EditableItemPropsType> = ({ todo }) => {
-  const [title, setTitle] = useState<string>(todo.title)
-  const { updateTodoTitle } = useTodos(todo)
-
-  const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.currentTarget.value)
-  }
+  const { title, handleChangeTitle, updateTodoTitle } = useTodos(todo)
 
   return (
     <Editable
       defaultValue={title}
-      onSubmit={() => updateTodoTitle(title)}
+      onSubmit={updateTodoTitle}
       isDisabled={todo.completed}
+      marginRight={'auto'}
     >
       <EditablePreview />
       <Input

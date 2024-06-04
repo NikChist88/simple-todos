@@ -1,57 +1,36 @@
-import { useState, ChangeEvent, KeyboardEvent } from 'react'
-import { useAppDispatch } from '../store'
-import { TodoType } from '../store/todo-slice'
-import {
-  createTodoTC,
-  removeTodoTC,
-  toggleTodoStatusTC,
-  updateTodoTitleTC,
-} from '../store/todo-thunks'
+import { ChangeEvent, useState } from 'react'
+import { TodoType } from '../api/todos-api'
+import { useDeleteTodoMutation, useUpdateTodoMutation } from '../api/todos-api'
 
-export const useTodos = (todo?: TodoType) => {
-  const dispatch = useAppDispatch()
-  const [title, setTitle] = useState<string>('')
+export const useTodos = (todo: TodoType) => {
+  const [updateTodo] = useUpdateTodoMutation()
+  const [deleteTodo] = useDeleteTodoMutation()
+  const [title, setTitle] = useState(todo.title)
 
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.currentTarget.value)
   }
 
-  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      addTodo()
+  const updateTodoTitle = async () => {
+    await updateTodo({ ...todo, title })
+  }
+
+  const toggleTodoStatus = async () => {
+    await updateTodo({ ...todo, completed: !todo.completed })
+  }
+
+  const removeTodo = async () => {
+    if (window.confirm(`Delete todo ${todo.title}?`)) {
+      await deleteTodo(todo.id)
     }
-  }
-
-  const removeTodo = () => {
-    if (todo && window.confirm(`Delete todo ${todo.title}?`)) {
-      dispatch(removeTodoTC(todo.id))
-    }
-  }
-
-  const toggleTodoStatus = () => {
-    todo &&
-      dispatch(toggleTodoStatusTC({ id: todo.id, completed: !todo.completed }))
-  }
-
-  const addTodo = () => {
-    if (title.trim().length) {
-      dispatch(createTodoTC(title))
-      setTitle('')
-    }
-  }
-
-  const updateTodoTitle = (title: string) => {
-    todo && dispatch(updateTodoTitleTC({ id: todo.id, title: title }))
   }
 
   return {
     title,
-    handleOnChange,
-    handleKeyPress,
+    handleChangeTitle,
 
-    removeTodo,
-    toggleTodoStatus,
-    addTodo,
     updateTodoTitle,
+    toggleTodoStatus,
+    removeTodo,
   }
 }
