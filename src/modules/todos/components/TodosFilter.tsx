@@ -1,6 +1,6 @@
 import { Stack, Button } from '@chakra-ui/react'
-import { useAppDispatch, useAppSelector } from '../store'
-import { changeFilterAC, selectFilter } from '../store/filter-slice'
+import { useAppDispatch, useAppSelector } from '../../../store'
+import { changeFilterAC, selectFilter } from '../../../store/filter-slice'
 
 export const TodosFilter = () => {
   const dispatch = useAppDispatch()

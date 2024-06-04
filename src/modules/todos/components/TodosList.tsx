@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { List } from '@chakra-ui/react'
 import { TodoItem } from './TodoItem'
-import { TodoType } from '../api/todos-api'
+import { TodoType } from '../../../api/todos-api'
 
 type TodosListProps = {
   todos: TodoType[]

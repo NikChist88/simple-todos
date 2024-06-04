@@ -6,6 +6,7 @@ export const Spinner = () => {
       position={'absolute'}
       left={'50%'}
       top={'50%'}
+      translateX={'-50%'}
       thickness="3px"
       speed="0.5s"
       size="xl"

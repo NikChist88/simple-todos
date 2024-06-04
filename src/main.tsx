@@ -9,7 +9,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import { MainLayout } from './layouts/MainLayout.tsx'
-import { HomePage, LoginPage, ErrorPage } from './pages'
+import { HomePage, AuthPage, ErrorPage } from './pages'
 import './index.css'
 
 const router = createBrowserRouter(
@@ -23,8 +23,8 @@ const router = createBrowserRouter(
         element={<HomePage />}
       />
       <Route
-        path="login"
-        element={<LoginPage />}
+        path="auth"
+        element={<AuthPage />}
       />
       <Route
         path="*"

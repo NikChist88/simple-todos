@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { EditableTodo } from './EditableTodo'
 import { ListItem, Checkbox } from '@chakra-ui/react'
-import { TodoType } from '../api/todos-api'
+import { TodoType } from '../../../api/todos-api'
 import { useTodos } from '../hooks/use-todos'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 

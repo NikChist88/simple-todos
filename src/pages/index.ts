@@ -1,3 +1,3 @@
 export { HomePage } from './HomePage'
-export { LoginPage } from './LoginPage'
+export { AuthPage } from './AuthPage'
 export { ErrorPage } from './ErrorPage'

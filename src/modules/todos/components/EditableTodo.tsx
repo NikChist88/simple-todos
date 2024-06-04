@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { TodoType } from '../api/todos-api'
+import { TodoType } from '../../../api/todos-api'
 import { useTodos } from '../hooks/use-todos'
 import {
   Editable,
