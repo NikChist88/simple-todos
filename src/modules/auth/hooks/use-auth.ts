@@ -1,6 +1,11 @@
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
+type Data = {
+  email: string
+  password: string
+}
+
 export const useAuth = () => {
   const navigate = useNavigate()
 
@@ -13,8 +18,8 @@ export const useAuth = () => {
     },
   })
 
-  const onLoginSubmit: SubmitHandler<> = (data) => {}
-  const onRegisterSubmit: SubmitHandler<> = async (data) => {}
+  const onLoginSubmit: SubmitHandler<Data> = (data) => {}
+  const onRegisterSubmit: SubmitHandler<Data> = async (data) => {}
 
   return {
     register,

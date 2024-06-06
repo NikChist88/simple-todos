@@ -1,61 +1,36 @@
 import { Logo, LoginForm, RegisterForm } from './components'
-import {
-  Container,
-  Box,
-  Stack,
-  Heading,
-  Tabs,
-  TabList,
-  Tab,
-  TabPanels,
-  TabPanel,
-} from '@chakra-ui/react'
+import { Tabs, TabList, Tab, TabPanels, TabPanel } from '@chakra-ui/react'
 
 export const Auth = () => {
   return (
-    <Container
-      maxW="lg"
-      py={{ base: '12', md: '24' }}
-      px={{ base: '0', sm: '8' }}
-    >
-      <Stack spacing="4">
-        <Stack spacing="4">
+    <div className="h-full flex items-center justify-center">
+      <div className="max-w-[450px] w-full flex flex-col items-center p-[15px]">
+        <div className="flex flex-col items-center gap-[15px] mb-[10px]">
           <Logo />
-          <Heading
-            textAlign={'center'}
-            size={{ base: 'md', md: 'md' }}
-          >
+          <h2 className="text-[24px] font-medium">
             Welcome: Login or Register
-          </Heading>
-        </Stack>
-        <Box
-          py={{ base: '0', sm: '8' }}
-          px={{ base: '4', sm: '10' }}
-          bg={{ base: 'transparent', sm: 'bg.surface' }}
-          boxShadow={{ base: 'none', sm: 'md' }}
-          borderRadius={{ base: 'none', sm: 'xl' }}
-        >
-          <Stack spacing="6">
-            <Tabs colorScheme="blue">
-              <TabList
-                display={'flex'}
-                justifyContent={'space-between'}
-              >
-                <Tab>Login</Tab>
-                <Tab>Register</Tab>
-              </TabList>
-              <TabPanels>
-                <TabPanel>
-                  <LoginForm />
-                </TabPanel>
-                <TabPanel>
-                  <RegisterForm />
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
-          </Stack>
-        </Box>
-      </Stack>
-    </Container>
+          </h2>
+        </div>
+        <div className="w-full">
+          <Tabs colorScheme="blue">
+            <TabList
+              display={'flex'}
+              justifyContent={'space-between'}
+            >
+              <Tab>Login</Tab>
+              <Tab>Register</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <LoginForm />
+              </TabPanel>
+              <TabPanel>
+                <RegisterForm />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </div>
+      </div>
+    </div>
   )
 }

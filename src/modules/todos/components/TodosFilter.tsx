@@ -11,30 +11,29 @@ export const TodosFilter = () => {
       direction="row"
       spacing={4}
       align="center"
-      marginBottom={'30px'}
     >
       <Button
-        colorScheme="teal"
+        colorScheme="purple"
         variant="solid"
-        size={'sm'}
+        size={'md'}
         onClick={() => dispatch(changeFilterAC('all'))}
         isActive={filter === 'all'}
       >
         All
       </Button>
       <Button
-        colorScheme="teal"
+        colorScheme="purple"
         variant="solid"
-        size={'sm'}
+        size={'md'}
         onClick={() => dispatch(changeFilterAC('active'))}
         isActive={filter === 'active'}
       >
         Active
       </Button>
       <Button
-        colorScheme="teal"
+        colorScheme="purple"
         variant="solid"
-        size={'sm'}
+        size={'md'}
         onClick={() => dispatch(changeFilterAC('completed'))}
         isActive={filter === 'completed'}
       >

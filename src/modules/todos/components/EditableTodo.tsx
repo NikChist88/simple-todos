@@ -22,14 +22,15 @@ export const EditableTodo: FC<EditableItemPropsType> = ({ todo }) => {
       isDisabled={todo.completed}
       marginRight={'auto'}
     >
-      <EditablePreview />
+      <EditablePreview cursor={'pointer'} />
       <Input
         as={EditableInput}
-        width={'95%'}
-        height={'24px'}
+        width={'100%'}
+        height={'28px'}
         fontSize={'14px'}
         maxLength={25}
-        focusBorderColor="#259795"
+        focusBorderColor="#fff"
+        border={'none'}
         onChange={handleChangeTitle}
       />
     </Editable>

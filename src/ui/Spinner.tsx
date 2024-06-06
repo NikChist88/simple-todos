@@ -10,8 +10,8 @@ export const Spinner = () => {
       thickness="3px"
       speed="0.5s"
       size="xl"
-      emptyColor="gray.200"
-      color="#259795"
+      emptyColor="#fff"
+      color="#815CD2"
     />
   )
 }

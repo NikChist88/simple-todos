@@ -1,29 +1,32 @@
-import { Input, Button, Box } from '@chakra-ui/react'
-import { MdAddCircleOutline } from 'react-icons/md'
+import { Input, Button } from '@chakra-ui/react'
 import { useTodosForm } from '../hooks/use-todos-form'
 
 export const TodosForm = () => {
   const { title, handleOnChange, handleKeyPress, createTodo } = useTodosForm()
 
   return (
-    <Box className="max-w-[600px] w-full py-[20px] flex items-center justify-center gap-[10px]">
+    <div className="w-full flex mb-[30px]">
       <Input
-        height={'35px'}
-        variant={'flushed'}
-        focusBorderColor="#259795"
+        placeholder="Enter the task..."
+        size="sm"
+        focusBorderColor="#815CD2"
         onChange={handleOnChange}
         onKeyUp={handleKeyPress}
         value={title}
         maxLength={25}
-        placeholder="Please enter todo..."
+        color={'#fff'}
+        height={'35px'}
       />
       <Button
-        height={35}
-        colorScheme="teal"
+        fontSize={'12px'}
+        height={'36px'}
+        borderRadius={'none'}
+        colorScheme="purple"
         onClick={createTodo}
+        marginLeft={'-1px'}
       >
-        <MdAddCircleOutline size={'24px'} />
+        Add Task
       </Button>
-    </Box>
+    </div>
   )
 }
